@@ -1,6 +1,9 @@
 var express = require("express")
 var exphbs = require("express-handlebars")
 const mongoose = require("mongoose")
+// use environmental variables
+require("dotenv").config()
+var nodemailer = require("nodemailer")
 
 var routes = require("./routes")
 

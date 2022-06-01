@@ -117,6 +117,18 @@ const InquirySchema = new Schema({
   },
   comments: String,
   date: { type: Date, default: Date.now },
+  // processing variables
+  processed: {
+    status: {
+      type: String,
+      default: "New",
+      enum: ["New", "Pending", "Booked", "Cancelled"],
+    },
+    customMessage: String,
+    paymentLink: String,
+    notesForPending: String,
+    dateSelected: String,
+  },
 })
 
 const Inquiry = mongoose.model("Inquiry", InquirySchema)
