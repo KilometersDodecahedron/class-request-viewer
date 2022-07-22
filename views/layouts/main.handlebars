@@ -22,11 +22,25 @@
     <script src="./js/server-functions/inquiry-server-functions.js"></script>
     <script src="./js/server-functions/email-server-functions.js"></script>
     {{! ui functions }}
+    <script defer src="./js/ui-functions/general-ui-functions.js"></script>
     <script defer src="./js/ui-functions/request-type-processor.js"></script>
     <script defer src="./js/ui-functions/new-inquiry-functions.js"></script>
+    <script defer src="./js/ui-functions/pending-inquiry-functions.js"></script>
+    <script defer src="./js/ui-functions/booked-inquiry-functions.js"></script>
+    <script defer src="./js/ui-functions/canceled-inquiry-functions.js"></script>
     <script defer src="./js/ui-functions/start-functions.js"></script>
+    {{! rich text editor }}
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    {{!-- custom css --}}
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     {{{body}}}
+    <div class="overlay d-none">
+      <div class="overlay-message">
+        Processing your request...
+      </div>
+    </div>
   </body>
 </html>

@@ -122,8 +122,27 @@ const InquirySchema = new Schema({
     status: {
       type: String,
       default: "New",
-      enum: ["New", "Pending", "Booked", "Cancelled"],
+      enum: ["New", "Pending", "Booked", "Completed", "Canceled"],
     },
+    dates: {
+      respondedAndPending: {
+        type: String,
+        default: "",
+      },
+      booked: {
+        type: String,
+        default: "",
+      },
+      completed: {
+        type: String,
+        default: "",
+      },
+      canceled: {
+        type: String,
+        default: "",
+      },
+    },
+    responseEmailBody: String,
     customMessage: String,
     paymentLink: String,
     notesForPending: String,

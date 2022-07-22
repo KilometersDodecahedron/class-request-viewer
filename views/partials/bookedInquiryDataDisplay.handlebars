@@ -1,109 +1,60 @@
-<div>
+<div class="display-booked--holder">
   <div>
-    <span>Requested Class:</span>
-    <span class="display-new--class">Class</span>
-  </div>
-  <div>
-    <span>Date Sent:</span>
-    <span class="display-new--Date">5/5/2022</span>
+    <span class="display-title">Requested Class:</span>
+    <span class="display-booked--class">Class</span>
   </div>
   <div>
-    <span>Name:</span>
-    <span class="display-new--f-name">Joe</span>
-    <span class="display-new--l-name">Johnson</span>
+    <span class="display-title">Date Sent:</span>
+    <span class="display-booked--Date">5/5/2022</span>
   </div>
   <div>
-    <span>Email:</span>
-    <span class="display-new--email">example@example.com</span>
+    <span class="display-title">Name:</span>
+    <span class="display-booked--f-name">Joe</span>
+    <span class="display-booked--l-name">Johnson</span>
   </div>
   <div>
-    <span>Phone Number:</span>
-    <span class="display-new--phone">1234567890</span>
-    (<span class="text-uppercase" class="display-new--phone-type">cell</span>)
+    <span class="display-title">Email:</span>
+    <span class="display-booked--email">example@example.com</span>
   </div>
   <div>
-    <span>Participants:</span>
-    <span class="display-new--participants">8</span>
+    <span class="display-title">Phone Number:</span>
+    <span class="display-booked--phone">1234567890</span>
+    (<span class="display-booked--phone-type text-uppercase">cell</span>)
   </div>
   <div>
-    <span>Class Type:</span>
-    <span class="display-new--class-type">virtual</span>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="dateTimeChoices"
-      id="display-new--date-1-radio"
-      checked
-    />
-    <label class="form-check-label" for="display-new--date-1-radio">
-      <span>Date/Time 1st Choice:</span>
-      <span class="display-new--date-1">4/6/2018</span>
-      at
-      <span class="display-new--time-1">4:00pm</span>
-      <span class="display-new--alt-timezone-holder-1">
-        (THEIR Date/Time:
-        <span class="display-new--local-date-1">4/6/2018</span>
-        at
-        <span class="display-new--time-1">3:00pm</span>)
-      </span>
-    </label>
-  </div>
-  <div class="form-check display-new--date-2-holder">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="dateTimeChoices"
-      id="display-new--date-2-radio"
-    />
-    <label class="form-check-label" for="display-new--date-2-radio">
-      <span>Date/Time 2nd Choice:</span>
-      <span class="display-new--date-2">4/6/2018</span>
-      at
-      <span class="display-new--time-2">4:00pm</span>
-      <span class="display-new--alt-timezone-holder-2">
-        (THEIR Date/Time:
-        <span class="display-new--local-date-2">4/6/2018</span>
-        at
-        <span class="display-new--time-2">3:00pm</span>)
-      </span>
-    </label>
-  </div>
-  <div class="form-check display-new--date-3-holder">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="dateTimeChoices"
-      id="display-new--date-3-radio"
-    />
-    <label class="form-check-label" for="display-new--date-3-radio">
-      <span>Date/Time 3rd Choice:</span>
-      <span class="display-new--date-3">4/6/2018</span>
-      at
-      <span class="display-new--time-3">4:00pm</span>
-      <span class="display-new--alt-timezone-holder-3">
-        (THEIR Date/Time:
-        <span class="display-new--local-date-3">4/6/2018</span>
-        at
-        <span class="display-new--time-3">3:00pm</span>)
-      </span>
-    </label>
+    <span class="display-title">Participants:</span>
+    <span class="display-booked--participants">8</span>
   </div>
   <div>
-    <span>Age Group:</span>
-    <span class="display-new--age">Child</span>
+    <span class="display-title">Class Type:</span>
+    <span class="display-booked--class-type">virtual</span>
   </div>
   <div>
-    <span>Location:</span>
-    <span class="display-new--location">Child</span>
+    <span class="display-title">Date/Time:</span>
+    <span class="display-booked--date-selected">virtual</span>
   </div>
   <div>
-    <span>Is this class a gift?:</span>
-    <span class="display-new--gift">No</span>
+    <span class="display-title">Age Group:</span>
+    <span class="display-booked--age">Child</span>
   </div>
   <div>
-    <span>Additional Comments:</span>
-    <span class="display-new--comments">hello</span>
+    <span class="display-title">Location:</span>
+    <span class="display-booked--location">Child</span>
+  </div>
+  <div>
+    <span class="display-title">Is this class a gift?:</span>
+    <span class="display-booked--gift">No</span>
+  </div>
+  <div>
+    <span class="display-title">Additional Comments:</span>
+    <span class="display-booked--comments">hello</span>
+  </div>
+  <div>
+    <span class="display-title">Response Email they were sent:</span>
+    <p class="display-booked--response-email emailDisplay"></p>
+  </div>
+  <div class="d-flex p-2">
+    <button class="btn btn-primary display-booked--completed-button">Completed</button>
+    <button class="btn btn-danger display-booked--canceled-button giveLeftMargin">Canceled</button>
   </div>
 </div>

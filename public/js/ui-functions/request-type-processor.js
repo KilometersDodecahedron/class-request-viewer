@@ -19,13 +19,21 @@ const requestTypeProcessor = {
   getNewRequests: callback => {
     getInquiriesByProperty({ "processed.status": "New" }, callback)
   },
-  getPendingRequests: _array => {},
-  getBookedRequests: _array => {},
-  getCancelledRequests: _array => {},
+  getPendingRequests: callback => {
+    getInquiriesByProperty({ "processed.status": "Pending" }, callback)
+  },
+  getBookedRequests: callback => {
+    getInquiriesByProperty({ "processed.status": "Booked" }, callback)
+  },
+  getCompletedRequests: callback => {},
+  getCanceledRequests: callback => {
+    getInquiriesByProperty({ "processed.status": "Canceled" }, callback)
+  },
   getAllRequests: _array => {
     requestTypeProcessor.getNewRequests(_array)
     requestTypeProcessor.getPendingRequests(_array)
     requestTypeProcessor.getBookedRequests(_array)
+    requestTypeProcessor.getCompletedRequests(_array)
     requestTypeProcessor.getCancelledRequests(_array)
   },
 }

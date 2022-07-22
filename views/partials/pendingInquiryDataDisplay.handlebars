@@ -1,109 +1,87 @@
-<div>
+<div class="display-pending--holder">
   <div>
-    <span>Requested Class:</span>
-    <span class="display-new--class">Class</span>
+    <span class="display-title">Requested Class:</span>
+    <span class="display-pending--class">Class</span>
   </div>
   <div>
-    <span>Date Sent:</span>
-    <span class="display-new--Date">5/5/2022</span>
+    <span class="display-title">Date Sent:</span>
+    <span class="display-pending--Date">5/5/2022</span>
   </div>
   <div>
-    <span>Name:</span>
-    <span class="display-new--f-name">Joe</span>
-    <span class="display-new--l-name">Johnson</span>
+    <span class="display-title">Name:</span>
+    <span class="display-pending--f-name">Joe</span>
+    <span class="display-pending--l-name">Johnson</span>
   </div>
   <div>
-    <span>Email:</span>
-    <span class="display-new--email">example@example.com</span>
+    <span class="display-title">Email:</span>
+    <span class="display-pending--email">example@example.com</span>
   </div>
   <div>
-    <span>Phone Number:</span>
-    <span class="display-new--phone">1234567890</span>
-    (<span class="text-uppercase" class="display-new--phone-type">cell</span>)
+    <span class="display-title">Phone Number:</span>
+    <span class="display-pending--phone">1234567890</span>
+    (<span class="text-uppercase display-pending--phone-type">cell</span>)
   </div>
   <div>
-    <span>Participants:</span>
-    <span class="display-new--participants">8</span>
+    <span class="display-title">Participants:</span>
+    <span class="display-pending--participants">8</span>
   </div>
   <div>
-    <span>Class Type:</span>
-    <span class="display-new--class-type">virtual</span>
+    <span class="display-title">Class Type:</span>
+    <span class="display-pending--class-type">virtual</span>
+  </div>
+  {{!-- <div>
+    <span class="display-title">Age Group:</span>
+    <span class="display-pending--date-time-selected">Child</span>
+  </div> --}}
+  <div>
+    <span class="display-title">Date/Time:</span>
+    <span class="display-pending--date-selected">4/6/2018</span>
+  </div>
+  <div>
+    <span class="display-title">Age Group:</span>
+    <span class="display-pending--age">Child</span>
+  </div>
+  <div>
+    <span class="display-title">Location:</span>
+    <span class="display-pending--location">Child</span>
+  </div>
+  <div class="d-none display-pending--address-holder">
+    <span class="display-title">Address:</span>
+    <span class="display-pending--location-address">Child</span>
+  </div>
+  <div>
+    <span class="display-title">Is this class a gift?:</span>
+    <span class="display-pending--gift">No</span>
+  </div>
+  <div>
+    <span class="display-title">Additional Comments:</span>
+    <span class="display-pending--comments">hello</span>
+  </div>
+  <div>
+    <span class="display-title">Response Email they were sent:</span>
+    <p class="display-pending--response-email emailDisplay"></p>
   </div>
   <div class="form-check">
     <input
-      class="form-check-input"
-      type="radio"
-      name="dateTimeChoices"
-      id="display-new--date-1-radio"
-      checked
+      class="form-check-input display-pending--change-date-checkbox"
+      type="checkbox"
+      value=""
+      id="display-pending--checkbox-label--SET"
     />
-    <label class="form-check-label" for="display-new--date-1-radio">
-      <span>Date/Time 1st Choice:</span>
-      <span class="display-new--date-1">4/6/2018</span>
-      at
-      <span class="display-new--time-1">4:00pm</span>
-      <span class="display-new--alt-timezone-holder-1">
-        (THEIR Date/Time:
-        <span class="display-new--local-date-1">4/6/2018</span>
-        at
-        <span class="display-new--time-1">3:00pm</span>)
-      </span>
+    <label
+      class="display-title form-check-label display-pending--change-date-label"
+      for="display-pending--checkbox-label--SET"
+    >
+      👈 Check here if Date/Time Has Been Changed
     </label>
-  </div>
-  <div class="form-check display-new--date-2-holder">
     <input
-      class="form-check-input"
-      type="radio"
-      name="dateTimeChoices"
-      id="display-new--date-2-radio"
+      class="form-control display-pending--change-date-text"
+      type="text"
+      placeholder="New Date (for your records)"
     />
-    <label class="form-check-label" for="display-new--date-2-radio">
-      <span>Date/Time 2nd Choice:</span>
-      <span class="display-new--date-2">4/6/2018</span>
-      at
-      <span class="display-new--time-2">4:00pm</span>
-      <span class="display-new--alt-timezone-holder-2">
-        (THEIR Date/Time:
-        <span class="display-new--local-date-2">4/6/2018</span>
-        at
-        <span class="display-new--time-2">3:00pm</span>)
-      </span>
-    </label>
   </div>
-  <div class="form-check display-new--date-3-holder">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="dateTimeChoices"
-      id="display-new--date-3-radio"
-    />
-    <label class="form-check-label" for="display-new--date-3-radio">
-      <span>Date/Time 3rd Choice:</span>
-      <span class="display-new--date-3">4/6/2018</span>
-      at
-      <span class="display-new--time-3">4:00pm</span>
-      <span class="display-new--alt-timezone-holder-3">
-        (THEIR Date/Time:
-        <span class="display-new--local-date-3">4/6/2018</span>
-        at
-        <span class="display-new--time-3">3:00pm</span>)
-      </span>
-    </label>
-  </div>
-  <div>
-    <span>Age Group:</span>
-    <span class="display-new--age">Child</span>
-  </div>
-  <div>
-    <span>Location:</span>
-    <span class="display-new--location">Child</span>
-  </div>
-  <div>
-    <span>Is this class a gift?:</span>
-    <span class="display-new--gift">No</span>
-  </div>
-  <div>
-    <span>Additional Comments:</span>
-    <span class="display-new--comments">hello</span>
+  <div class="d-flex p-2">
+    <button class="btn btn-primary display-pending--booked-button">Booked</button>
+    <button class="btn btn-danger display-pending--canceled-button giveLeftMargin">Canceled</button>
   </div>
 </div>
