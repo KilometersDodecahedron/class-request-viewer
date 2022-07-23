@@ -212,6 +212,33 @@
   </div>
 </template>
 
+<template id="completed-inquiry-template">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-COMPLETED">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#SET-COLLAPSE-PROGRAMATICALLY-COMPLETED"
+        aria-expanded="false"
+        aria-controls="SET-COLLAPSE-PROGRAMATICALLY-COMPLETED"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="SET-COLLAPSE-PROGRAMATICALLY-COMPLETED"
+      class="accordion-collapse collapse"
+      aria-labelledby="SET-HEADER-PROGRAMATICALLY-COMPLETED"
+      data-bs-parent="#SET-PARENT-PROGRAMATICALLY-COMPLETED"
+    >
+      <div class="accordion-body">
+        {{> completedInquiryDataDisplay}}
+      </div>
+    </div>
+  </div>
+</template>
+
 <template id="canceled-inquiry-template">
   <div class="accordion-item">
     <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-CANCELED">

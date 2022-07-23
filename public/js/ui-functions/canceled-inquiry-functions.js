@@ -5,11 +5,14 @@ const canceledInquiries = {
   inquiryArray: [],
   inquiryDisplayHolder: document.querySelector("#inquiry-accordion-holder--canceled"),
   inquiryDisplayTemplate: document.querySelector("#canceled-inquiry-template"),
+  accordianButtonNumberDisplay: document
+    .querySelector("#request-heading-canceled")
+    .querySelector("button"),
   startFunctions: () => {
     requestTypeProcessor.getCanceledRequests(data => {
       canceledInquiries.inquiryArray = data
-      console.log(canceledInquiries.inquiryArray)
       canceledInquiries.populateInquiries()
+      canceledInquiries.accordianButtonNumberDisplay.innerHTML = `Canceled Requests (${canceledInquiries.inquiryArray.length})`
       document
         .querySelector("body")
         .addEventListener("click", canceledInquiries.initialDeleteButtonFunction)
@@ -23,6 +26,7 @@ const canceledInquiries = {
     requestTypeProcessor.getCanceledRequests(data => {
       canceledInquiries.inquiryArray = data
       canceledInquiries.populateInquiries()
+      canceledInquiries.accordianButtonNumberDisplay.innerHTML = `Canceled Requests (${canceledInquiries.inquiryArray.length})`
     })
   },
   createInquiryDisplayFromTemplate: (_inquiry, _index) => {
@@ -165,13 +169,10 @@ const canceledInquiries = {
       )
     }
   },
-
   initialDeleteButtonFunction: e => {
     if (e.target.classList.contains("display-canceled--delete-button-initial")) {
       let mainHolder = e.target.closest(".display-canceled--holder")
-      console.log(mainHolder)
       let buttonHolder = mainHolder.querySelector(".display-canceled--delete-confirm")
-      console.log(buttonHolder)
       buttonHolder.classList.remove("d-none")
     }
   },

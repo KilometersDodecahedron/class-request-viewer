@@ -36,12 +36,17 @@ const newInquiries = {
   inquiryArray: [],
   inquiryDisplayHolder: document.querySelector("#inquiry-accordion-holder--new"),
   inquiryDisplayTemplate: document.querySelector("#new-inquiry-template"),
+  accordianButtonNumberDisplay: document
+    .querySelector("#request-heading-new")
+    .querySelector("button"),
   startFunctions: () => {
     requestTypeProcessor.getNewRequests(data => {
       newInquiries.inquiryArray = data
       newInquiries.populateInquiries()
+      newInquiries.accordianButtonNumberDisplay.innerHTML = `New Requests (${newInquiries.inquiryArray.length})`
       document.querySelector("body").addEventListener("click", newInquiries.sendResponseFunction)
       document.querySelector("body").addEventListener("click", newInquiries.formatResponseFunction)
+      document.querySelector("body").addEventListener("click", newInquiries.canceledButtonFunction)
     })
   },
   resetDisplay: () => {
@@ -49,6 +54,7 @@ const newInquiries = {
     requestTypeProcessor.getNewRequests(data => {
       newInquiries.inquiryArray = data
       newInquiries.populateInquiries()
+      newInquiries.accordianButtonNumberDisplay.innerHTML = `New Requests (${newInquiries.inquiryArray.length})`
     })
   },
   UTILITYreturnDateString: (_holderElement, _justDate) => {
@@ -87,6 +93,7 @@ const newInquiries = {
     let formattedResponseField = item.querySelector("#display-new--rich-text--second--SET")
     let responseButton = item.querySelector(".display-new--response-button")
     let formatButton = item.querySelector(".display-new--format-button")
+    let canceledButton = item.querySelector(".display-new--canceled-button")
 
     // data setting elements
     let className = item.querySelector(".display-new--class")
@@ -216,6 +223,7 @@ const newInquiries = {
     formattedResponseField.id = `${newInquiries.richTextIdBaseTwo}${_index}`
     responseButton.setAttribute("data-index", _index)
     formatButton.setAttribute("data-index", _index)
+    canceledButton.setAttribute("data-index", _index)
 
     return item
   },
@@ -234,9 +242,25 @@ const newInquiries = {
       var quill = new Quill(`#${newInquiries.richTextIdBaseTwo}${i}`, { theme: "snow" })
     }
   },
+  canceledButtonFunction: e => {
+    if (e.target.classList.contains("display-new--canceled-button")) {
+      let inquiryIndex = e.target.dataset.index
+      let dbData = { ...newInquiries.inquiryArray[inquiryIndex] }
+      dbData.processed.status = "Canceled"
+      dbData.processed.dates.canceled = new Date().toLocaleString()
+
+      general.showOverlayElement()
+      updateInquiry(dbData, dbData._id, () => {
+        newInquiries.resetDisplay()
+        canceledInquiries.resetDisplay()
+        general.hideOverlayElement()
+      })
+    }
+  },
   formatResponseFunction: e => {
     if (e.target.classList.contains("display-new--format-button")) {
       let holderElement = e.target.closest(".display-new--holder")
+      console.log(holderElement)
       let hiddenHolder = holderElement.querySelector(".display-new--final-response-holder")
       let textField = hiddenHolder.querySelector(".ql-editor")
       let subjectLineField = hiddenHolder.querySelector(".display-new--subject-line")
@@ -262,10 +286,6 @@ const newInquiries = {
       let subjectLine = holderElement.querySelector(".display-new--subject-line")
       let selectedInquiry = newInquiries.inquiryArray[e.target.dataset.index]
 
-      console.log(holderElement)
-      console.log(responseField.innerHTML)
-      console.log(subjectLine)
-      console.log(selectedInquiry)
       // TODO Email
       // set customer target email address
       let customerEmail = selectedInquiry.email
@@ -298,7 +318,7 @@ const newInquiries = {
       } else {
         dbData.processed.dates.respondedAndPending = today
       }
-      console.log(dbData)
+
       let customerEmailData = {
         emailAddress: customerEmail,
         emailBody: customerBody,
@@ -310,7 +330,6 @@ const newInquiries = {
           customerBody,
         subject: newInquiries.defaultEmailSubjectLine.ownerSubjectLine,
       }
-      console.log(ownerEmailData)
       testEmailRoute(customerEmailData)
       emailClient(customerEmailData)
       emailOwner(ownerEmailData)

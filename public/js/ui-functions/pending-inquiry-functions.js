@@ -5,10 +5,14 @@ const pendingInquiries = {
   inquiryArray: [],
   inquiryDisplayHolder: document.querySelector("#inquiry-accordion-holder--pending"),
   inquiryDisplayTemplate: document.querySelector("#pending-inquiry-template"),
+  accordianButtonNumberDisplay: document
+    .querySelector("#request-heading-pending")
+    .querySelector("button"),
   startFunctions: () => {
     requestTypeProcessor.getPendingRequests(data => {
       pendingInquiries.inquiryArray = data
       pendingInquiries.populateInquiries()
+      pendingInquiries.accordianButtonNumberDisplay.innerHTML = `Pending Requests (${pendingInquiries.inquiryArray.length})`
       document
         .querySelector("body")
         .addEventListener("click", pendingInquiries.bookedButtonFunction)
@@ -23,6 +27,7 @@ const pendingInquiries = {
     requestTypeProcessor.getPendingRequests(data => {
       pendingInquiries.inquiryArray = data
       pendingInquiries.populateInquiries()
+      pendingInquiries.accordianButtonNumberDisplay.innerHTML = `Pending Requests (${pendingInquiries.inquiryArray.length})`
     })
   },
   createInquiryDisplayFromTemplate: (_inquiry, _index) => {
@@ -126,8 +131,6 @@ const pendingInquiries = {
       let dbData = { ...pendingInquiries.inquiryArray[inquiryIndex] }
       dbData.processed.status = "Booked"
       dbData.processed.dates.booked = new Date().toLocaleString()
-      console.log(holderElement)
-      console.log(newDateInput.value)
       // prevent uploading an empty date
       if (checked && newDateInput.value === "") return
       if (checked) {
@@ -159,5 +162,3 @@ const pendingInquiries = {
     }
   },
 }
-
-console.log(pendingInquiries)

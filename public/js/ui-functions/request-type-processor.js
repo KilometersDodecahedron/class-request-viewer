@@ -14,7 +14,6 @@ const requestTypeProcessor = {
     requestTypeProcessor.inquiryTemplate.canceled = document.querySelector(
       "#canceled-inquiry-template"
     )
-    console.log(requestTypeProcessor.inquiryTemplate)
   },
   getNewRequests: callback => {
     getInquiriesByProperty({ "processed.status": "New" }, callback)
@@ -25,7 +24,9 @@ const requestTypeProcessor = {
   getBookedRequests: callback => {
     getInquiriesByProperty({ "processed.status": "Booked" }, callback)
   },
-  getCompletedRequests: callback => {},
+  getCompletedRequests: callback => {
+    getInquiriesByProperty({ "processed.status": "Completed" }, callback)
+  },
   getCanceledRequests: callback => {
     getInquiriesByProperty({ "processed.status": "Canceled" }, callback)
   },

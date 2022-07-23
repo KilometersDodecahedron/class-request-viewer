@@ -133,7 +133,11 @@
   <div class="quillEditor" id="display-new--rich-text--SET">
     {{! set programatically }}
   </div>
-  <button type="button" class="btn btn-primary display-new--format-button">Format Response</button>
+
+  <div class="d-flex p-2">
+    <button type="button" class="btn btn-primary display-new--format-button">Format Response</button>
+    <button class="btn btn-danger display-new--canceled-button giveLeftMargin">Canceled</button>
+  </div>
   <div class="d-none display-new--final-response-holder">
     <div class="giveSpace display-title">Email Subject Line</div>
     <input type="text" class="form-control display-new--subject-line">

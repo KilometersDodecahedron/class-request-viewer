@@ -6,7 +6,6 @@ const emailClient = (_data, _callback) => {
     data: _data,
   })
     .then(data => {
-      console.log(data)
       if (_callback) {
         _callback(data)
       }
@@ -22,7 +21,6 @@ const emailOwner = (_data, _callback) => {
     data: _data,
   })
     .then(data => {
-      console.log(data)
       if (_callback) {
         _callback(data)
       }
@@ -31,7 +29,6 @@ const emailOwner = (_data, _callback) => {
 }
 
 const testEmailRoute = (_data, _callback) => {
-  console.log(_data)
   $.ajax({
     type: "POST",
     url: "/api/email/test",
@@ -39,7 +36,6 @@ const testEmailRoute = (_data, _callback) => {
     data: _data,
   })
     .then(data => {
-      console.log(data)
       if (_callback) {
         _callback(data)
       }

@@ -1,11 +1,18 @@
 const bookedInquiries = {
+  headerIdBaseName: "booked-header-base--",
+  collapseIdBaseName: "booked-collapse-base--",
+  dateTimeIdBaseName: "booked-date-time-base--",
   inquiryArray: [],
   inquiryDisplayHolder: document.querySelector("#inquiry-accordion-holder--booked"),
   inquiryDisplayTemplate: document.querySelector("#booked-inquiry-template"),
+  accordianButtonNumberDisplay: document
+    .querySelector("#request-heading-booked")
+    .querySelector("button"),
   startFunctions: () => {
     requestTypeProcessor.getBookedRequests(data => {
       bookedInquiries.inquiryArray = data
       bookedInquiries.populateInquiries()
+      bookedInquiries.accordianButtonNumberDisplay.innerHTML = `Booked Requests (${bookedInquiries.inquiryArray.length})`
       document
         .querySelector("body")
         .addEventListener("click", bookedInquiries.completedButtonFunction)
@@ -19,6 +26,7 @@ const bookedInquiries = {
     requestTypeProcessor.getBookedRequests(data => {
       bookedInquiries.inquiryArray = data
       bookedInquiries.populateInquiries()
+      bookedInquiries.accordianButtonNumberDisplay.innerHTML = `Booked Requests (${bookedInquiries.inquiryArray.length})`
     })
   },
   createInquiryDisplayFromTemplate: (_inquiry, _index) => {
@@ -106,7 +114,21 @@ const bookedInquiries = {
       )
     }
   },
-  completedButtonFunction: e => {},
+  completedButtonFunction: e => {
+    if (e.target.classList.contains("display-booked--completed-button")) {
+      let inquiryIndex = e.target.dataset.index
+      let dbData = { ...bookedInquiries.inquiryArray[inquiryIndex] }
+      dbData.processed.status = "Completed"
+      dbData.processed.dates.completed = new Date().toLocaleString()
+
+      general.showOverlayElement()
+      updateInquiry(dbData, dbData._id, () => {
+        bookedInquiries.resetDisplay()
+        completedInquiries.resetDisplay()
+        general.hideOverlayElement()
+      })
+    }
+  },
   canceledButtonFunction: e => {
     if (e.target.classList.contains("display-booked--canceled-button")) {
       let inquiryIndex = e.target.dataset.index
