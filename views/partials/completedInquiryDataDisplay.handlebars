@@ -58,11 +58,21 @@
     <span class="display-title">Response Email they were sent:</span>
     <p class="display-completed--response-email emailDisplay"></p>
   </div>
-  <div>
-    <button class="btn btn-danger display-completed--delete-button-initial">Delete Entry</button>
+  <div class="d-flex p-2">
+    <button type="button" class="btn btn-primary display-completed--format-button">Format Response</button>
+    <button class="btn btn-danger display-completed--delete-button-initial giveLeftMargin">Delete Entry</button>
   </div>
   <br>
   <div class="d-none display-completed--delete-confirm">
     <button class="btn btn-lg btn-danger display-completed--delete-button-final">This will PERMANENTLY delete this entry from the database. Click here to confirm.</button>
+  </div>
+  <div class="d-none display-completed--response-holder">
+    <div class="giveSpace display-title">Email Subject Line</div>
+    <input type="text" class="form-control display-completed--subject-line">
+    <div class="giveSpace display-title">Formatted Response</div>
+    <div class="quillEditor" id="display-completed--rich-text--SET">
+      {{! set programatically }}
+    </div>
+    <button type="button" class="btn btn-primary display-completed--response-button">Send Response</button>
   </div>
 </div>

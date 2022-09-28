@@ -260,7 +260,6 @@ const newInquiries = {
   formatResponseFunction: e => {
     if (e.target.classList.contains("display-new--format-button")) {
       let holderElement = e.target.closest(".display-new--holder")
-      console.log(holderElement)
       let hiddenHolder = holderElement.querySelector(".display-new--final-response-holder")
       let textField = hiddenHolder.querySelector(".ql-editor")
       let subjectLineField = hiddenHolder.querySelector(".display-new--subject-line")

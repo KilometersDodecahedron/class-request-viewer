@@ -147,6 +147,10 @@ const InquirySchema = new Schema({
     paymentLink: String,
     notesForPending: String,
     dateSelected: String,
+    hasSentResponseAferCompletedClass: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 

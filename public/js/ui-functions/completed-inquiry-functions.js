@@ -5,6 +5,25 @@ const completedInquiries = {
   headerIdBaseName: "completed-header-base--",
   collapseIdBaseName: "completed-collapse-base--",
   dateTimeIdBaseName: "completed-date-time-base--",
+  // for rich text editor
+  richTextIdBase: "display-completed--rich-text--",
+  emailPrewrittenInfo: {
+    googleReviewLink: "TODO ADD GOOGLE LINK",
+    newsLetterLink: "TODO ADD NEWS LETTER LINK",
+    subjectLine: "Thank you for taking a class with us!",
+    returnFormattedResponse: _name => {
+      return `<p>Hi ${_name}
+
+Thank you for taking a class with us. We hope you enjoyed your activity. When you have a moment we would love it if you could leave us a review on Google here ${completedInquiries.emailPrewrittenInfo.googleReviewLink}. 
+      
+If you would like to stay up to date on future classes, special events, and shop updates, sign up for our newsletter here ${completedInquiries.emailPrewrittenInfo.newsLetterLink}
+      
+If you have any questions regarding the class you took or if you are interesting in taking another class, feel free to reach out to us. 
+      
+Sincerely,
+Kristen Zachares</p>`
+    },
+  },
   inquiryArray: [],
   inquiryDisplayHolder: document.querySelector("#inquiry-accordion-holder--completed"),
   inquiryDisplayTemplate: document.querySelector("#completed-inquiry-template"),
@@ -22,6 +41,9 @@ const completedInquiries = {
       document
         .querySelector("body")
         .addEventListener("click", completedInquiries.finalDeleteButtonFunction)
+      document
+        .querySelector("body")
+        .addEventListener("click", completedInquiries.formatButtonFunction)
     })
   },
   resetDisplay: () => {
@@ -39,6 +61,11 @@ const completedInquiries = {
     let accordionHeader = item.querySelector(".accordion-header")
     let accordionButton = item.querySelector(".accordion-button")
     let accordionCollapse = item.querySelector(".accordion-collapse")
+
+    // rich text related
+    let formattedResponseField = item.querySelector("#display-completed--rich-text--SET")
+    let responseButton = item.querySelector(".display-completed--response-button")
+    let formatButton = item.querySelector(".display-completed--format-button")
 
     // data setting elements
     let className = item.querySelector(".display-completed--class")
@@ -105,6 +132,10 @@ const completedInquiries = {
       `#${completedInquiries.collapseIdBaseName}${_index}`
     )
 
+    formattedResponseField.id = `${completedInquiries.richTextIdBase}${_index}`
+    responseButton.setAttribute("data-index", _index)
+    formatButton.setAttribute("data-index", _index)
+    formatButton.setAttribute("data-client-name", `${_inquiry.firstName} ${_inquiry.lastName}`)
     deleteButton.setAttribute("data-inquiry-id", _inquiry._id)
 
     return item
@@ -114,6 +145,25 @@ const completedInquiries = {
       completedInquiries.inquiryDisplayHolder.append(
         completedInquiries.createInquiryDisplayFromTemplate(completedInquiries.inquiryArray[i], i)
       )
+
+      var quill = new Quill(`#${completedInquiries.richTextIdBase}${i}`, { theme: "snow" })
+    }
+  },
+  formatButtonFunction: e => {
+    if (e.target.classList.contains("display-completed--format-button")) {
+      let holderElement = e.target.closest(".display-completed--holder")
+      let hiddenHolder = holderElement.querySelector(".display-completed--response-holder")
+      let textField = hiddenHolder.querySelector(".ql-editor")
+      let subjectLineField = hiddenHolder.querySelector(".display-completed--subject-line")
+
+      let responseEmailBody = completedInquiries.emailPrewrittenInfo.returnFormattedResponse(
+        e.target.dataset.clientName
+      )
+
+      textField.innerHTML = responseEmailBody
+      subjectLineField.value = completedInquiries.emailPrewrittenInfo.subjectLine
+
+      hiddenHolder.classList.remove("d-none")
     }
   },
   initialDeleteButtonFunction: e => {
