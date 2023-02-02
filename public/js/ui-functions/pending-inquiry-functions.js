@@ -85,7 +85,7 @@ const pendingInquiries = {
     // TODO display date it was responded to on
     // set name of accordion options
     if (!_inquiry.processed.dates.respondedAndPending) {
-      accordionButton.innerHTML = `Sent on: ${_inquiry.date.split("T").shift()} || Class: ${
+      accordionButton.innerHTML = `Recieved: ${_inquiry.date.split("T").shift()} || Class: ${
         _inquiry.nameOfRequestedClass
       }`
     } else {

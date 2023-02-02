@@ -81,7 +81,7 @@ const bookedInquiries = {
 
     // set name of accordion options
     if (!_inquiry.processed.dates.booked) {
-      accordionButton.innerHTML = `Sent on: ${_inquiry.date.split("T").shift()} || Class: ${
+      accordionButton.innerHTML = `Recieved: ${_inquiry.date.split("T").shift()} || Class: ${
         _inquiry.nameOfRequestedClass
       }`
     } else {

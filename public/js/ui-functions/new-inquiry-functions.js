@@ -192,7 +192,7 @@ const newInquiries = {
     comments.innerHTML = _inquiry.comments
 
     // set name of accordion options
-    accordionButton.innerHTML = `Sent on: ${_inquiry.date.split("T").shift()} || Class: ${
+    accordionButton.innerHTML = `Received: ${_inquiry.date.split("T").shift()} || Class: ${
       _inquiry.nameOfRequestedClass
     }`
 

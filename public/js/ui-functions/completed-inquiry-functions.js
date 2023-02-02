@@ -8,15 +8,15 @@ const completedInquiries = {
   // for rich text editor
   richTextIdBase: "display-completed--rich-text--",
   emailPrewrittenInfo: {
-    googleReviewLink: "TODO ADD GOOGLE LINK",
-    newsLetterLink: "TODO ADD NEWS LETTER LINK",
+    googleReviewLink: "https://g.page/r/CTkJRKOl-defEBM/review",
+    newsLetterLink: "https://squareup.com/outreach/pve2zx/subscribe",
     subjectLine: "Thank you for taking a class with us!",
     returnFormattedResponse: _name => {
       return `<p>Hi ${_name}
 
-Thank you for taking a class with us. We hope you enjoyed your activity. When you have a moment we would love it if you could leave us a review on Google here ${completedInquiries.emailPrewrittenInfo.googleReviewLink}. 
+Thank you for taking a class with us. We hope you enjoyed your activity. When you have a moment we would love it if you could leave us a review on Google here <a href="${completedInquiries.emailPrewrittenInfo.googleReviewLink}">${completedInquiries.emailPrewrittenInfo.googleReviewLink}</a> 
       
-If you would like to stay up to date on future classes, special events, and shop updates, sign up for our newsletter here ${completedInquiries.emailPrewrittenInfo.newsLetterLink}
+If you would like to stay up to date on future classes, special events, and shop updates, sign up for our newsletter here <a href="${completedInquiries.emailPrewrittenInfo.newsLetterLink}">${completedInquiries.emailPrewrittenInfo.newsLetterLink}</a>
       
 If you have any questions regarding the class you took or if you are interesting in taking another class, feel free to reach out to us. 
       
@@ -108,7 +108,7 @@ Kristen Zachares</p>`
 
     // set name of accordion options
     if (!_inquiry.processed.dates.completed) {
-      accordionButton.innerHTML = `Sent on: ${_inquiry.date.split("T").shift()} || Class: ${
+      accordionButton.innerHTML = `Recieved: ${_inquiry.date.split("T").shift()} || Class: ${
         _inquiry.nameOfRequestedClass
       }`
     } else {
