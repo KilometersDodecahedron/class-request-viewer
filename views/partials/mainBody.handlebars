@@ -1,0 +1,267 @@
+<div class="accordion" id="request-accordian-holder">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="request-heading-new">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#request-collapse-new"
+        aria-expanded="true"
+        aria-controls="request-collapse-new"
+      >
+        New Requests
+      </button>
+    </h2>
+    <div
+      id="request-collapse-new"
+      class="accordion-collapse collapse show"
+      aria-labelledby="request-heading-new"
+      data-bs-parent="#request-accordian-holder"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="inquiry-accordion-holder--new">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="request-heading-pending">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#request-collapse-pending"
+        aria-expanded="false"
+        aria-controls="request-collapse-pending"
+      >
+        Pending Requests
+      </button>
+    </h2>
+    <div
+      id="request-collapse-pending"
+      class="accordion-collapse collapse"
+      aria-labelledby="request-heading-pending"
+      data-bs-parent="#request-accordian-holder"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="inquiry-accordion-holder--pending">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="request-heading-booked">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#request-collapse-booked"
+        aria-expanded="false"
+        aria-controls="request-collapse-booked"
+      >
+        Booked Requests
+      </button>
+    </h2>
+    <div
+      id="request-collapse-booked"
+      class="accordion-collapse collapse"
+      aria-labelledby="request-heading-booked"
+      data-bs-parent="#request-accordian-holder"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="inquiry-accordion-holder--booked">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="request-heading-completed">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#request-collapse-completed"
+        aria-expanded="false"
+        aria-controls="request-collapse-completed"
+      >
+        Completed Requests
+      </button>
+    </h2>
+    <div
+      id="request-collapse-completed"
+      class="accordion-collapse collapse"
+      aria-labelledby="request-heading-completed"
+      data-bs-parent="#request-accordian-holder"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="inquiry-accordion-holder--completed">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="request-heading-canceled">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#request-collapse-canceled"
+        aria-expanded="false"
+        aria-controls="request-collapse-canceled"
+      >
+        Canceled Requests
+      </button>
+    </h2>
+    <div
+      id="request-collapse-canceled"
+      class="accordion-collapse collapse"
+      aria-labelledby="request-heading-canceled"
+      data-bs-parent="#request-accordian-holder"
+    >
+      <div class="accordion-body">
+        <div class="accordion" id="inquiry-accordion-holder--canceled">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<template id="new-inquiry-template">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-NEW">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#SET-COLLAPSE-PROGRAMATICALLY-NEW"
+        aria-expanded="false"
+        aria-controls="SET-COLLAPSE-PROGRAMATICALLY-NEW"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="SET-COLLAPSE-PROGRAMATICALLY-NEW"
+      class="accordion-collapse collapse"
+      aria-labelledby="SET-HEADER-PROGRAMATICALLY-NEW"
+      data-bs-parent="#SET-PARENT-PROGRAMATICALLY-NEW"
+    >
+      <div class="accordion-body">
+        {{> newInquiryDataDisplay}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="pending-inquiry-template">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-PENDING">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#SET-COLLAPSE-PROGRAMATICALLY-PENDING"
+        aria-expanded="false"
+        aria-controls="SET-COLLAPSE-PROGRAMATICALLY-PENDING"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="SET-COLLAPSE-PROGRAMATICALLY-PENDING"
+      class="accordion-collapse collapse"
+      aria-labelledby="SET-HEADER-PROGRAMATICALLY-PENDING"
+      data-bs-parent="#SET-PARENT-PROGRAMATICALLY-PENDING"
+    >
+      <div class="accordion-body">
+        {{> pendingInquiryDataDisplay}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="booked-inquiry-template">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-BOOKED">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#SET-COLLAPSE-PROGRAMATICALLY-BOOKED"
+        aria-expanded="false"
+        aria-controls="SET-COLLAPSE-PROGRAMATICALLY-BOOKED"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="SET-COLLAPSE-PROGRAMATICALLY-BOOKED"
+      class="accordion-collapse collapse"
+      aria-labelledby="SET-HEADER-PROGRAMATICALLY-BOOKED"
+      data-bs-parent="#SET-PARENT-PROGRAMATICALLY-BOOKED"
+    >
+      <div class="accordion-body">
+        {{> bookedInquiryDataDisplay}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="completed-inquiry-template">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-COMPLETED">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#SET-COLLAPSE-PROGRAMATICALLY-COMPLETED"
+        aria-expanded="false"
+        aria-controls="SET-COLLAPSE-PROGRAMATICALLY-COMPLETED"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="SET-COLLAPSE-PROGRAMATICALLY-COMPLETED"
+      class="accordion-collapse collapse"
+      aria-labelledby="SET-HEADER-PROGRAMATICALLY-COMPLETED"
+      data-bs-parent="#SET-PARENT-PROGRAMATICALLY-COMPLETED"
+    >
+      <div class="accordion-body">
+        {{> completedInquiryDataDisplay}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="canceled-inquiry-template">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="SET-HEADER-PROGRAMATICALLY-CANCELED">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#SET-COLLAPSE-PROGRAMATICALLY-CANCELED"
+        aria-expanded="false"
+        aria-controls="SET-COLLAPSE-PROGRAMATICALLY-CANCELED"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="SET-COLLAPSE-PROGRAMATICALLY-CANCELED"
+      class="accordion-collapse collapse"
+      aria-labelledby="SET-HEADER-PROGRAMATICALLY-CANCELED"
+      data-bs-parent="#SET-PARENT-PROGRAMATICALLY-CANCELED"
+    >
+      <div class="accordion-body">
+        {{> canceledInquiryDataDisplay}}
+      </div>
+    </div>
+  </div>
+</template>
