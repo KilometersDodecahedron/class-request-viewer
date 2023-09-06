@@ -17,6 +17,20 @@ router.use(function (req, res) {
   console.log(req.query.token)
   let token = req.query.token
 
+  // var PORT = process.env.PORT || 8080
+  // if (PORT === 8080) {
+  //   console.warn(
+  //     "Used the Testing route in index.js in the routes folder to log in. Don't push the code to Heroku until you take this out."
+  //   )
+  //   res.render(path.join(__dirname, "../views/index.handlebars"))
+  // } else if (err) {
+  //   console.log("not verified")
+  //   res.render(path.join(__dirname, "../views/login.handlebars"))
+  // } else {
+  //   console.log("verified")
+  //   res.render(path.join(__dirname, "../views/index.handlebars"))
+  // }
+
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     // tells user token isn't valid
     if (err) {

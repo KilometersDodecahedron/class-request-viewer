@@ -98,10 +98,16 @@ Kristen Zachares</p>`
     classType.innerHTML = _inquiry.classType
     dateSelected.innerHTML = _inquiry.processed.dateSelected
     ageGroup.innerHTML = _inquiry.ageGroup
+    // if (_inquiry.ageGroup == "Mixed") {
+    //   ageGroup.innerHTML = "Baby & Me"
+    // }
     location.innerHTML = _inquiry.location.locationType
     responseEmailBody.innerHTML = _inquiry.processed.responseEmailBody
     if (_inquiry.location.locationType == "Host Venue") {
       locationAddress.innerHTML = _inquiry.location.hostAddress
+      addressHolder.classList.remove("d-none")
+    } else if (_inquiry.location.locationType == "Women's Club") {
+      location.innerHTML = "Virtual"
     }
     gift.innerHTML = _inquiry.giftOption ? "Yes" : "No"
     comments.innerHTML = _inquiry.comments

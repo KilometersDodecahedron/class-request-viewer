@@ -184,9 +184,15 @@ const newInquiries = {
       dateTimeThirdChoiceHolder.classList.add("d-none")
     }
     ageGroup.innerHTML = _inquiry.ageGroup
+    // if (_inquiry.ageGroup == "Mixed") {
+    //   ageGroup.innerHTML = "Baby & Me"
+    // }
     location.innerHTML = _inquiry.location.locationType
     if (_inquiry.location.locationType == "Host Venue") {
       locationAddress.innerHTML = _inquiry.location.hostAddress
+      addressHolder.classList.remove("d-none")
+    } else if (_inquiry.location.locationType == "Women's Club") {
+      location.innerHTML = "Virtual"
     }
     gift.innerHTML = _inquiry.giftOption ? "Yes" : "No"
     comments.innerHTML = _inquiry.comments
