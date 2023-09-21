@@ -335,7 +335,7 @@ const newInquiries = {
           customerBody,
         subject: newInquiries.defaultEmailSubjectLine.ownerSubjectLine,
       }
-      testEmailRoute(customerEmailData)
+      // testEmailRoute(customerEmailData)
       emailClient(customerEmailData)
       emailOwner(ownerEmailData)
       general.showOverlayElement()

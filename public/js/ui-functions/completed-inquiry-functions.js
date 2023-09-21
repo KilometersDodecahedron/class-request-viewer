@@ -11,6 +11,10 @@ const completedInquiries = {
     googleReviewLink: "https://g.page/r/CTkJRKOl-defEBM/review",
     newsLetterLink: "https://squareup.com/outreach/pve2zx/subscribe",
     subjectLine: "Thank you for taking a class with us!",
+    ownerSubjectLine: "A Thank You email has been sent",
+    ownerEmailBodyPrefaceFunction: inquiry => {
+      return `${inquiry.firstName} ${inquiry.lastName} had a Thank You email sent to ${inquiry.email}. The following is the content of the email they recieved:<br><br><br>`
+    },
     returnFormattedResponse: _name => {
       return `<p>Hi ${_name}
 
@@ -35,6 +39,9 @@ Kristen Zachares</p>`
       completedInquiries.inquiryArray = data
       completedInquiries.populateInquiries()
       completedInquiries.accordianButtonNumberDisplay.innerHTML = `Completed Requests (${completedInquiries.inquiryArray.length})`
+      document
+        .querySelector("body")
+        .addEventListener("click", completedInquiries.sendResponseFunction)
       document
         .querySelector("body")
         .addEventListener("click", completedInquiries.initialDeleteButtonFunction)
@@ -112,15 +119,22 @@ Kristen Zachares</p>`
     gift.innerHTML = _inquiry.giftOption ? "Yes" : "No"
     comments.innerHTML = _inquiry.comments
 
+    let hasSentThankYou = _inquiry.processed.hasSentResponseAferCompletedClass ? "(RESPONDED) " : ""
+
     // set name of accordion options
     if (!_inquiry.processed.dates.completed) {
       accordionButton.innerHTML = `Recieved: ${_inquiry.date.split("T").shift()} || Class: ${
         _inquiry.nameOfRequestedClass
       }`
     } else {
-      accordionButton.innerHTML = `Completed on: ${_inquiry.processed.dates.completed} || Class: ${_inquiry.nameOfRequestedClass}`
+      accordionButton.innerHTML =
+        hasSentThankYou +
+        `Completed on: ${_inquiry.processed.dates.completed} || Class: ${_inquiry.nameOfRequestedClass}`
     }
 
+    if (_inquiry.processed.hasSentResponseAferCompletedClass) {
+      formatButton.disabled = true
+    }
     // set ids and attributes for bootstrap accordion functions
     accordionHeader.id = `${completedInquiries.headerIdBaseName}${_index}`
     accordionCollapse.id = `${completedInquiries.collapseIdBaseName}${_index}`
@@ -170,6 +184,51 @@ Kristen Zachares</p>`
       subjectLineField.value = completedInquiries.emailPrewrittenInfo.subjectLine
 
       hiddenHolder.classList.remove("d-none")
+    }
+  },
+  sendResponseFunction: e => {
+    if (e.target.classList.contains("display-completed--response-button")) {
+      let holderElement = e.target.closest(".display-completed--holder")
+      let responseField = holderElement.querySelector(".ql-editor")
+      let subjectLine = holderElement.querySelector(".display-completed--subject-line")
+      let selectedInquiry = completedInquiries.inquiryArray[e.target.dataset.index]
+
+      // TODO Email
+      // set customer target email address
+      let customerEmail = selectedInquiry.email
+      // set kristen target email address
+
+      // set customer subject line
+      let customerSubject = subjectLine.value
+      // set kristen subject line
+      // set customer email content
+      let customerBody = responseField.innerHTML
+      // set kristen email content
+      // TODO Database
+      let dbData = { ...selectedInquiry }
+      // set processed.responseEmailBody to customer email content
+      dbData.processed.hasSentResponseAferCompletedClass = true
+
+      let customerEmailData = {
+        emailAddress: customerEmail,
+        emailBody: customerBody,
+        subject: customerSubject,
+      }
+      let ownerEmailData = {
+        emailBody:
+          completedInquiries.emailPrewrittenInfo.ownerEmailBodyPrefaceFunction(selectedInquiry) +
+          customerBody,
+        subject: completedInquiries.emailPrewrittenInfo.ownerSubjectLine,
+      }
+      // testEmailRoute(customerEmailData)
+      emailClient(customerEmailData)
+      emailOwner(ownerEmailData)
+      general.showOverlayElement()
+      updateInquiry(dbData, selectedInquiry._id, () => {
+        completedInquiries.resetDisplay()
+        general.hideOverlayElement()
+        // TODO finish creating function
+      })
     }
   },
   initialDeleteButtonFunction: e => {

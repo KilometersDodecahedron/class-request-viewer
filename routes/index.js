@@ -14,7 +14,7 @@ router.use("/verify", verifyRoutes)
 // })
 
 router.use(function (req, res) {
-  console.log(req.query.token)
+  // console.log(req.query.token)
   let token = req.query.token
 
   // var PORT = process.env.PORT || 8080
