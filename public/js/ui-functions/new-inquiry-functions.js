@@ -190,7 +190,7 @@ const newInquiries = {
     location.innerHTML = _inquiry.location.locationType
     if (_inquiry.location.locationType == "Host Venue") {
       locationAddress.innerHTML = _inquiry.location.hostAddress
-      addressHolder.classList.remove("d-none")
+      // addressHolder.classList.remove("d-none")
     } else if (_inquiry.location.locationType == "Women's Club") {
       location.innerHTML = "Virtual"
     }
